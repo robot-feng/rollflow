@@ -1,0 +1,8 @@
+# Versions used for the 2026-10-27 Pusher experiments. Install into a
+# dedicated environment that already has this repository's PyTorch stack.
+minari==0.5.3
+gymnasium==1.2.2
+mujoco==3.2.3
+numpy==1.26.4
+h5py==3.16.0
+matplotlib==3.10.1

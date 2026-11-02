@@ -1,0 +1,4 @@
+# Only the versions in TEST_REPORT.md were actually executed in this release.
+torch>=2.2
+pytest>=8
+# scipy is OPTIONAL for executing original use_ot=True; quick/default tests don't require it.

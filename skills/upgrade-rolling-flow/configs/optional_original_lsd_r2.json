@@ -1,0 +1,86 @@
+{
+  "schema_version": "rollflow-migration/1.0",
+  "preset": "lsd-original",
+  "baseline_policy": "my_policy",
+  "registered_policy": "my_policy_rollflow_lsd",
+  "initialization": "native",
+  "checkpoint_horizon": null,
+  "allow_horizon_change": false,
+  "geometry": {
+    "horizon": 64,
+    "execution_chunks": 4,
+    "actions_per_output": 16
+  },
+  "model": {
+    "velocity_mode": "average",
+    "time_shape": "[B,H]",
+    "native_time_convention": "from_native",
+    "new_trainable_parameters": "endpoint_branch_only",
+    "parameter_loading": "explicit_new_keys_only"
+  },
+  "training": {
+    "group_domain": "execution_chunks",
+    "group_unit": 16,
+    "group_choices": [
+      1,
+      2,
+      4
+    ],
+    "group_probabilities": [
+      0.7,
+      0.15000000000000002,
+      0.15000000000000002
+    ],
+    "single_group_probability": 0.7,
+    "one_layout_per_batch": true,
+    "independent_times_per_example": true,
+    "time_sampler": "uniform_canonical_original",
+    "noise_sampler": "gaussian_original",
+    "loss_reduction": "original_valid_token_mean",
+    "ot": true,
+    "cfg": false,
+    "meanflow": false,
+    "persistent_cache": false,
+    "lsd": {
+      "enabled": true,
+      "variant": "original_absolute_fd_v1",
+      "recipe_source": "core",
+      "p_fm": 0.7,
+      "fm_curriculum_steps": 20000,
+      "total_train_steps": null,
+      "w_fm": 1.0,
+      "w_lsd": 0.5,
+      "finite_difference_delta": 0.01
+    }
+  },
+  "inference": {
+    "lifecycle_refinements": 2,
+    "cold_nfe": 2,
+    "warm_nfe": 1,
+    "iterative_cold_start": true,
+    "consumption": "exact_C_confirmed",
+    "output": "clean_front_only",
+    "cache": "latent_per_session",
+    "combined_rtc_async": "requires_separate_validation"
+  },
+  "integration_status": "configuration_only_not_adapted",
+  "required_audits": [
+    "native_time_sign_and_sampler",
+    "native_prior_and_tail_independence",
+    "actual_factory_and_action_head",
+    "token_time_through_all_layers",
+    "native_masks_and_loss_reduction",
+    "checkpoint_key_shape_and_function_equivalence",
+    "data_horizon_and_action_coordinates",
+    "fresh_observation_prefix_and_suffix_kv_reset",
+    "confirmed_consumption_and_session_reset",
+    "fresh_versus_rolling_quality",
+    "coupled_time_path_and_fd_precision",
+    "teacher_stopgrad_and_packed_order"
+  ],
+  "warnings": [
+    "LSD 是显式可选路线：需要区间条件与额外前向/梯度；少步质量没有自动保证",
+    "original_absolute_fd_v1 保留原始 active-token 的绝对 t±δ；不能冒称为直线路径 LSD",
+    "原始 ratio 采样与 warm 阶梯不完全匹配，耦合 token 的路径一致性仍需宿主专项验证"
+  ]
+}

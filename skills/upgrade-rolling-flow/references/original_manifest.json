@@ -1,0 +1,17 @@
+{
+  "sources": {
+    "references/original_sources/cross_attention_dit.py": {
+      "sha256": "9a5e4e7dec45efc0059d03a2854339ed6f430cb786d3f65c83e011753884d75f",
+      "bytes": 20890
+    },
+    "references/original_sources/rolling_meanflow.py": {
+      "sha256": "90289edbc1a12003907743912bae33371947428e8c46b9ce7085b26f7fb36ec4",
+      "bytes": 34462
+    },
+    "references/original_sources/starvla_rollflow_action_head.py": {
+      "sha256": "f107782dc8e7285aed8f2f1bb62835b04360b8d5f2c1f2ce6c244b0468302c83",
+      "bytes": 15295
+    }
+  },
+  "original_docstring_sha256": "5552db5201478a8b9959f4c013738cec330326331599a19e00ea305882a3bad5"
+}

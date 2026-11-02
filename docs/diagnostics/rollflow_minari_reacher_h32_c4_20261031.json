@@ -1,0 +1,450 @@
+{
+  "experiment": "Minari MuJoCo Reacher expert-v0, three-arm state-only comparison",
+  "date": "2026-10-31",
+  "training": {
+    "dataset_id": "mujoco/reacher/expert-v0",
+    "episodes_used": 256,
+    "episode_split_counts": {
+      "train": 180,
+      "validation": 38,
+      "test": 38
+    },
+    "dataset_sha256": "4fc4ed494414ed4c9d2879b7599cc95dbe2f6d3bce0486dff7caaeec7dfc8fea",
+    "horizon": 32,
+    "execution_chunk": 4,
+    "action_chunks": 8,
+    "state_dim": 10,
+    "action_dim": 2,
+    "dit": {
+      "width": 64,
+      "layers": 2,
+      "heads": 4,
+      "head_dim": 16
+    },
+    "steps_per_arm": 20000,
+    "train_seed": 42,
+    "device": "cpu",
+    "threads": 1,
+    "batch_size": 8,
+    "repeated_diffusion_steps": 4,
+    "learning_rate": 0.0003,
+    "use_ot": false,
+    "p_k1": 0.0,
+    "p_fm_floor": 0.3,
+    "fm_warmup_steps": 2000,
+    "lsd_weight": 0.05,
+    "lsd_warmup_steps": 1000,
+    "delta": 0.01,
+    "shared_initial_sha256": "7d064a5d6c70379971060aff6006963fb0f4263eb93942d1d18a3ba0da1bd608",
+    "source_git_head": "c7c720fff36d46bce559211667aec7887a9eb2c2",
+    "torch": "2.7.1+cu126",
+    "python": "3.10.19"
+  },
+  "evaluation": {
+    "environment_seeds": [
+      62000,
+      62001,
+      62002,
+      62003,
+      62004,
+      62005,
+      62006,
+      62007,
+      62008,
+      62009
+    ],
+    "episodes_per_mode_and_k": 10,
+    "max_steps": 1000,
+    "refinement_steps": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "metric_note": "Return is a ten-seed environment evaluation. Replay MSE is aggregated over the held-out test episodes."
+  },
+  "results": {
+    "rolling_lsd": {
+      "instant_k1": {
+        "replay_normalized_mse": 0.011464506403396003,
+        "mean_return": -4.877500110924182,
+        "action_clip_fraction": 0.0,
+        "environment_returns": [
+          -5.959501851942294,
+          -8.238835387729292,
+          -4.026005190494306,
+          -6.730350989196159,
+          -3.689361996508758,
+          -6.383242046356969,
+          -3.7904113074139785,
+          -5.321452711137318,
+          -1.330005242835602,
+          -3.3058343856271457
+        ]
+      },
+      "average_k1": {
+        "replay_normalized_mse": 0.015009520759708003,
+        "mean_return": -4.491621588539949,
+        "action_clip_fraction": 0.0,
+        "environment_returns": [
+          -5.831606236146634,
+          -7.592013887526812,
+          -3.8095341167246852,
+          -4.158692084044373,
+          -4.3029141369583215,
+          -5.008069800453278,
+          -3.724612282105415,
+          -4.374073295524329,
+          -1.2956094546323569,
+          -4.8190905912832855
+        ]
+      },
+      "instant_k2": {
+        "replay_normalized_mse": 0.010010909642043866,
+        "mean_return": -3.903988047696032,
+        "action_clip_fraction": 0.0,
+        "environment_returns": [
+          -4.677013496780562,
+          -6.452659042523785,
+          -3.5354217575399085,
+          -3.4472625139882695,
+          -4.097429661553501,
+          -4.505201040898299,
+          -4.201718803333438,
+          -3.8470549537416394,
+          -0.6719216425624219,
+          -3.604197564038486
+        ]
+      },
+      "average_k2": {
+        "replay_normalized_mse": 0.01728544483059331,
+        "mean_return": -4.740629548009555,
+        "action_clip_fraction": 0.0,
+        "environment_returns": [
+          -6.130635915884532,
+          -6.890849447229855,
+          -3.91394152447514,
+          -4.299181656044622,
+          -4.507594965423457,
+          -5.288476005442947,
+          -4.861963006324123,
+          -4.821145867801864,
+          -1.8485481310327956,
+          -4.843958960436218
+        ]
+      },
+      "instant_k4": {
+        "replay_normalized_mse": 0.010416974801766244,
+        "mean_return": -3.9447869718298207,
+        "action_clip_fraction": 0.0,
+        "environment_returns": [
+          -4.689327195144376,
+          -6.225216738117254,
+          -3.339840798724645,
+          -3.3556884725905625,
+          -4.72237598354628,
+          -4.45018006682542,
+          -4.805120073847713,
+          -3.416337703856614,
+          -0.9285316467984164,
+          -3.515251038846923
+        ]
+      },
+      "average_k4": {
+        "replay_normalized_mse": 0.018985166486940885,
+        "mean_return": -4.964332617241813,
+        "action_clip_fraction": 0.0,
+        "environment_returns": [
+          -6.330588656320069,
+          -7.131134420871257,
+          -4.093586880780655,
+          -4.376806431966535,
+          -4.841946963008578,
+          -5.498563171131618,
+          -5.4388981047479845,
+          -4.847796097905311,
+          -2.265563562151037,
+          -4.81844188353509
+        ]
+      },
+      "instant_k8": {
+        "replay_normalized_mse": 0.01207344872386832,
+        "mean_return": -4.017226997177874,
+        "action_clip_fraction": 0.0,
+        "environment_returns": [
+          -4.893054522397217,
+          -6.464772797178486,
+          -3.294140703544163,
+          -3.370094281608724,
+          -4.687777672842024,
+          -4.5802265544799345,
+          -4.778065949707469,
+          -3.431705854288991,
+          -1.0913153680952723,
+          -3.581116267636457
+        ]
+      },
+      "average_k8": {
+        "replay_normalized_mse": 0.018664741767080207,
+        "mean_return": -4.763512842142883,
+        "action_clip_fraction": 0.0,
+        "environment_returns": [
+          -5.839936742871751,
+          -7.293071481125236,
+          -4.135469256930197,
+          -4.181740159366636,
+          -4.832768272501155,
+          -5.2542078545123205,
+          -5.24971297886605,
+          -4.396932688518226,
+          -2.1420178078465004,
+          -4.309271178890751
+        ]
+      }
+    },
+    "standard_fm": {
+      "instant_k1": {
+        "replay_normalized_mse": 0.0105630940042044,
+        "mean_return": -4.303240128511106,
+        "action_clip_fraction": 0.0,
+        "environment_returns": [
+          -6.171281769364429,
+          -7.804478354000147,
+          -4.0990579452725395,
+          -4.5981114677857935,
+          -3.3821631183522034,
+          -5.681521925212735,
+          -3.3373370196716228,
+          -3.247871804857245,
+          -0.7131833142835308,
+          -3.99739456631082
+        ]
+      },
+      "instant_k2": {
+        "replay_normalized_mse": 0.010367764077688519,
+        "mean_return": -4.096549135813346,
+        "action_clip_fraction": 0.0,
+        "environment_returns": [
+          -5.342443958334689,
+          -7.018079478036821,
+          -3.4680443342031406,
+          -3.9386810602543663,
+          -4.625869610768919,
+          -4.930580619919175,
+          -4.550068015071968,
+          -3.2071781852887526,
+          -0.48567822355070145,
+          -3.398867872704935
+        ]
+      },
+      "instant_k4": {
+        "replay_normalized_mse": 0.010832822997319072,
+        "mean_return": -4.234149860427127,
+        "action_clip_fraction": 0.0,
+        "environment_returns": [
+          -5.300871073717768,
+          -7.248404335495788,
+          -3.6041618337652865,
+          -3.6530325043129714,
+          -5.008040778747677,
+          -4.9375334999778975,
+          -5.27605826603891,
+          -3.2950151638475553,
+          -0.5919647068020828,
+          -3.4264164415653395
+        ]
+      },
+      "instant_k8": {
+        "replay_normalized_mse": 0.012612337517110925,
+        "mean_return": -4.608362584408826,
+        "action_clip_fraction": 0.0,
+        "environment_returns": [
+          -5.706979678329653,
+          -7.915515277524067,
+          -3.8737898812859046,
+          -3.945450189585269,
+          -5.308621715684913,
+          -5.253651047764983,
+          -5.849555569001456,
+          -3.6366138783346162,
+          -0.8626638116206082,
+          -3.7307847949567896
+        ]
+      }
+    },
+    "rolling_fm": {
+      "instant_k1": {
+        "replay_normalized_mse": 0.011550301940817582,
+        "mean_return": -4.971670875326768,
+        "action_clip_fraction": 0.0,
+        "environment_returns": [
+          -6.0967196022338,
+          -8.430785910453263,
+          -4.028102979826987,
+          -7.037413755647439,
+          -3.6812756188284586,
+          -6.697275865277459,
+          -3.6979038205050854,
+          -5.0257369278660065,
+          -1.596623825604984,
+          -3.424870447024199
+        ]
+      },
+      "instant_k2": {
+        "replay_normalized_mse": 0.010036416179255435,
+        "mean_return": -3.925743693884197,
+        "action_clip_fraction": 0.0,
+        "environment_returns": [
+          -4.6853816778252275,
+          -6.418575242463361,
+          -3.7245710253995634,
+          -3.4505114237868426,
+          -4.089061463290056,
+          -4.512573064454964,
+          -4.355063468621127,
+          -3.7662097416366844,
+          -0.6738722941947243,
+          -3.5816175371694223
+        ]
+      },
+      "instant_k4": {
+        "replay_normalized_mse": 0.010471141150123195,
+        "mean_return": -3.9757361846551076,
+        "action_clip_fraction": 0.0,
+        "environment_returns": [
+          -4.644820472414852,
+          -6.251065487650846,
+          -3.320055234146353,
+          -3.4082758750553572,
+          -4.799779311468596,
+          -4.419467194948342,
+          -5.084495144897881,
+          -3.4366808678072354,
+          -0.9093302079709925,
+          -3.4833920501906146
+        ]
+      },
+      "instant_k8": {
+        "replay_normalized_mse": 0.01210022924762023,
+        "mean_return": -4.054379964081997,
+        "action_clip_fraction": 0.0,
+        "environment_returns": [
+          -4.977157130272779,
+          -6.469606582266391,
+          -3.1937182919329374,
+          -3.40375006569832,
+          -4.666908176933398,
+          -4.6399035576668,
+          -4.954722279692784,
+          -3.4812209044490623,
+          -1.053307666561761,
+          -3.703504985345729
+        ]
+      }
+    }
+  },
+  "paired_bootstrap": {
+    "resamples": 200000,
+    "seed": 20261102,
+    "unit": "environment seed; paired within each seed",
+    "note": "Intervals quantify evaluation-seed variability only; the experiment uses one training seed.",
+    "comparisons": {
+      "rolling_fm_minus_fm": {
+        "1": {
+          "mean_return_delta": -0.6684307468156616,
+          "bootstrap_percentile_95ci": [
+            -1.2237999517355986,
+            -0.16758406135076226
+          ]
+        },
+        "2": {
+          "mean_return_delta": 0.1708054419291495,
+          "bootstrap_percentile_95ci": [
+            -0.08970442114093755,
+            0.4167006349229509
+          ]
+        },
+        "4": {
+          "mean_return_delta": 0.25841367577202073,
+          "bootstrap_percentile_95ci": [
+            0.03525227452540809,
+            0.49499428492690056
+          ]
+        },
+        "8": {
+          "mean_return_delta": 0.5539826203268298,
+          "bootstrap_percentile_95ci": [
+            0.2833647372312894,
+            0.8319646264278974
+          ]
+        }
+      },
+      "rolling_lsd_instant_minus_rolling_fm_instant": {
+        "1": {
+          "mean_return_delta": 0.09417076440258587,
+          "bootstrap_percentile_95ci": [
+            -0.025813275141438784,
+            0.20237653533454772
+          ]
+        },
+        "2": {
+          "mean_return_delta": 0.021755646188166243,
+          "bootstrap_percentile_95ci": [
+            -0.02232434389936081,
+            0.07489759403211602
+          ]
+        },
+        "4": {
+          "mean_return_delta": 0.030949212825286454,
+          "bootstrap_percentile_95ci": [
+            -0.014882842403585238,
+            0.09446079817390315
+          ]
+        },
+        "8": {
+          "mean_return_delta": 0.03715296690412242,
+          "bootstrap_percentile_95ci": [
+            -0.01010621210191896,
+            0.08464317643177993
+          ]
+        }
+      },
+      "rolling_lsd_average_minus_rolling_lsd_instant": {
+        "1": {
+          "mean_return_delta": 0.38587852238423337,
+          "bootstrap_percentile_95ci": [
+            -0.2515412188729356,
+            1.0510889599755273
+          ]
+        },
+        "2": {
+          "mean_return_delta": -0.8366415003135244,
+          "bootstrap_percentile_95ci": [
+            -1.0605428407680972,
+            -0.6225958001480996
+          ]
+        },
+        "4": {
+          "mean_return_delta": -1.0195456454119929,
+          "bootstrap_percentile_95ci": [
+            -1.268119677187141,
+            -0.7470274783589046
+          ]
+        },
+        "8": {
+          "mean_return_delta": -0.7462858449650083,
+          "bootstrap_percentile_95ci": [
+            -0.8873931752676786,
+            -0.5762294604233973
+          ]
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Only one training seed was run for each arm; cross-seed training variability is unknown.",
+    "Reacher episodes are 50 steps. H32 has few complete rolling execution chunks per episode.",
+    "Original FM uses its native Beta/global time sampling. RollFlow uses grouped staircase time sampling and an interval-time embedding; this is not an identical objective ablation.",
+    "The compact width-64 network is for fast diagnosis and does not establish production-scale behavior."
+  ]
+}

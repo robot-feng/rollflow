@@ -1,0 +1,33 @@
+{
+  "release": "1.0.0",
+  "default": {
+    "mode": "instant",
+    "horizon": 64,
+    "execution_chunks": 4,
+    "actions_per_output": 16,
+    "cold_nfe": 4,
+    "warm_nfe": 1,
+    "lsd": false,
+    "cfg": false
+  },
+  "tests": {
+    "passed": 107,
+    "failed": 0,
+    "skipped": 0
+  },
+  "executed_scope": [
+    "original_uploaded_core",
+    "portable_reference_kernels",
+    "configuration_creator",
+    "synthetic_joint_attention_head"
+  ],
+  "not_executed": [
+    "production_vla_checkpoints",
+    "all_xpolicylab_policies",
+    "gpu_mixed_precision",
+    "full_rtc_async",
+    "simulation",
+    "physical_robot"
+  ],
+  "source_preservation": "exact_bytes_and_docstring_verified"
+}

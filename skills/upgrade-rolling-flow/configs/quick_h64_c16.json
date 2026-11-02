@@ -1,0 +1,88 @@
+{
+  "schema_version": "rollflow-migration/1.0",
+  "preset": "quick",
+  "baseline_policy": "dm05",
+  "registered_policy": "dm05_rollflow_instant",
+  "initialization": "native",
+  "checkpoint_horizon": null,
+  "allow_horizon_change": false,
+  "geometry": {
+    "horizon": 64,
+    "execution_chunks": 4,
+    "actions_per_output": 16
+  },
+  "model": {
+    "velocity_mode": "instant",
+    "time_shape": "[B,H]",
+    "native_time_convention": "from_native",
+    "new_trainable_parameters": "none_expected",
+    "parameter_loading": "strict"
+  },
+  "training": {
+    "group_domain": "actions",
+    "group_unit": 1,
+    "group_choices": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "group_probabilities": [
+      0.14285714285714285,
+      0.14285714285714288,
+      0.14285714285714288,
+      0.14285714285714288,
+      0.14285714285714288,
+      0.14285714285714288,
+      0.14285714285714288
+    ],
+    "single_group_probability": 0.14285714285714285,
+    "one_layout_per_batch": true,
+    "independent_times_per_example": true,
+    "time_sampler": "native",
+    "noise_sampler": "native",
+    "loss_reduction": "native",
+    "ot": "inherit_native",
+    "cfg": false,
+    "meanflow": false,
+    "persistent_cache": false,
+    "lsd": {
+      "enabled": false,
+      "variant": null,
+      "recipe_source": null,
+      "p_fm": null,
+      "fm_curriculum_steps": 0,
+      "total_train_steps": null,
+      "w_fm": 1.0,
+      "w_lsd": 0.0,
+      "finite_difference_delta": null
+    }
+  },
+  "inference": {
+    "lifecycle_refinements": 4,
+    "cold_nfe": 4,
+    "warm_nfe": 1,
+    "iterative_cold_start": true,
+    "consumption": "exact_C_confirmed",
+    "output": "clean_front_only",
+    "cache": "latent_per_session",
+    "combined_rtc_async": "requires_separate_validation"
+  },
+  "integration_status": "configuration_only_not_adapted",
+  "required_audits": [
+    "native_time_sign_and_sampler",
+    "native_prior_and_tail_independence",
+    "actual_factory_and_action_head",
+    "token_time_through_all_layers",
+    "native_masks_and_loss_reduction",
+    "checkpoint_key_shape_and_function_equivalence",
+    "data_horizon_and_action_coordinates",
+    "fresh_observation_prefix_and_suffix_kv_reset",
+    "confirmed_consumption_and_session_reset",
+    "fresh_versus_rolling_quality"
+  ],
+  "warnings": []
+}
